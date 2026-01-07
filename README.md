@@ -1,7 +1,7 @@
 # CSharp_Week2_test
 
 ## Description
-This proram is a Digital Petty Cash Ledger System developed using C#.  
+This program is a Digital Petty Cash Ledger System developed using C#.  
 It demonstrates basic object-oriented programming concepts such as abstraction,
 inheritance, interfaces, generics, and collections.  
 The application records income and expense transactions and calculates the
