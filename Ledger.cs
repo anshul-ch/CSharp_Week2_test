@@ -2,20 +2,31 @@ using System.Collections.Generic;
 
 namespace DigitalPettyCashLedger
 {
-    // Generic ledger to store transactions in memory
-    // Not sealed to allow reuse or extension if needed
+    /// <summary>
+    /// Generic ledger class used to store transactions in memory.
+    /// </summary>
+    /// <typeparam name="T">A type derived from Transaction.</typeparam>
     public class Ledger<T> where T : Transaction
     {
-        // Private list to protect internal data
+        /// <summary>
+        /// Internal list that stores ledger entries.
+        /// Kept private to protect data integrity.
+        /// </summary>
         private readonly List<T> _entries = new List<T>();
 
-        // Adds a transaction to the ledger
+        /// <summary>
+        /// Adds a transaction entry to the ledger.
+        /// </summary>
+        /// <param name="entry">Transaction to add.</param>
         public void AddEntry(T entry)
         {
             _entries.Add(entry);
         }
 
-        // Returns a copy to prevent external modification
+        /// <summary>
+        /// Returns a copy of all ledger entries.
+        /// </summary>
+        /// <returns>List of transactions.</returns>
         public List<T> GetAll()
         {
             return new List<T>(_entries);

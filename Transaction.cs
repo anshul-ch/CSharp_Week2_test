@@ -2,17 +2,37 @@ using System;
 
 namespace DigitalPettyCashLedger
 {
-    // Abstract base class for all transactions
-    // Not sealed because it is meant to be inherited
+    /// <summary>
+    /// Abstract base class representing a financial transaction.
+    /// Contains common properties shared by all transaction types.
+    /// </summary>
     public abstract class Transaction : IReportable
     {
-        // Read-only properties to ensure immutability after creation
+        /// <summary>
+        /// Gets the unique identifier of the transaction.
+        /// </summary>
         public int Id { get; }
+
+        /// <summary>
+        /// Gets the date on which the transaction occurred.
+        /// </summary>
         public DateTime Date { get; }
+
+        /// <summary>
+        /// Gets the transaction amount.
+        /// This value is immutable after creation.
+        /// </summary>
         public decimal Amount { get; }
+
+        /// <summary>
+        /// Gets the description of the transaction.
+        /// </summary>
         public string Description { get; }
 
-        // Protected constructor so only derived classes can create transactions
+        /// <summary>
+        /// Initializes common transaction properties.
+        /// Constructor is protected to prevent direct instantiation.
+        /// </summary>
         protected Transaction(int id, DateTime date, decimal amount, string description)
         {
             Id = id;
@@ -21,7 +41,10 @@ namespace DigitalPettyCashLedger
             Description = description;
         }
 
-        // Forces derived classes to implement their own summary
+        /// <summary>
+        /// Generates a transaction-specific summary.
+        /// Must be implemented by derived classes.
+        /// </summary>
         public abstract string GetSummary();
     }
 }

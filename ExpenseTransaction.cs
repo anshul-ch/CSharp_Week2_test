@@ -2,12 +2,20 @@ using System;
 
 namespace DigitalPettyCashLedger
 {
-    // Sealed because ExpenseTransaction is also a final business concept
+    /// <summary>
+    /// Represents an expense transaction.
+    /// This class is sealed to prevent further inheritance.
+    /// </summary>
     public sealed class ExpenseTransaction : Transaction
     {
-        // Expense category (e.g., Food, Stationery)
+        /// <summary>
+        /// Gets the category of the expense.
+        /// </summary>
         public string Category { get; }
 
+        /// <summary>
+        /// Initializes a new expense transaction.
+        /// </summary>
         public ExpenseTransaction(
             int id,
             DateTime date,
@@ -19,6 +27,9 @@ namespace DigitalPettyCashLedger
             Category = category;
         }
 
+        /// <summary>
+        /// Returns a formatted summary specific to expense transactions.
+        /// </summary>
         public override string GetSummary()
         {
             return $"[EXPENSE] {Date:d} | {Category} | {Amount} | {Description}";

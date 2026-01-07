@@ -3,22 +3,23 @@ using System.Collections.Generic;
 
 namespace DigitalPettyCashLedger
 {
+    /// <summary>
+    /// Application entry point.
+    /// Handles only user input and output.
+    /// </summary>
     class Program
     {
-      ///<summary>
-      ///
-      ///</summary>
-    
+        /// <summary>
+        /// Main method that drives the console application.
+        /// </summary>
         static void Main()
         {
-            // Create separate ledgers for income and expenses
             Ledger<IncomeTransaction> incomeLedger =
                 new Ledger<IncomeTransaction>();
 
             Ledger<ExpenseTransaction> expenseLedger =
                 new Ledger<ExpenseTransaction>();
 
-            // -------- INCOME INPUT --------
             Console.WriteLine("Enter income amount:");
             decimal incomeAmount = decimal.Parse(Console.ReadLine());
 
@@ -35,7 +36,6 @@ namespace DigitalPettyCashLedger
                 )
             );
 
-            // -------- EXPENSE INPUT --------
             Console.WriteLine("Enter expense amount:");
             decimal expenseAmount = decimal.Parse(Console.ReadLine());
 
@@ -52,7 +52,6 @@ namespace DigitalPettyCashLedger
                 )
             );
 
-            // -------- CALCULATIONS --------
             decimal totalIncome =
                 LedgerCalculator.CalculateTotal(incomeLedger);
 
@@ -61,14 +60,12 @@ namespace DigitalPettyCashLedger
 
             decimal netBalance = totalIncome - totalExpense;
 
-            // -------- OUTPUT --------
             Console.WriteLine();
             Console.WriteLine($"Total Income: {totalIncome}");
             Console.WriteLine($"Total Expenses: {totalExpense}");
             Console.WriteLine($"Net Balance: {netBalance}");
             Console.WriteLine();
 
-            // Polymorphic reporting
             List<Transaction> allTransactions = new List<Transaction>();
             allTransactions.AddRange(incomeLedger.GetAll());
             allTransactions.AddRange(expenseLedger.GetAll());
